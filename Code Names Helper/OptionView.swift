@@ -8,21 +8,29 @@ struct OptionView: View {
     var body: some View {
         HStack {
             Text("1st Player")
-                .foregroundColor(key.isBlueFirst ? .blue : .red)
             Picker(selection: .init(get: {
                 key.isBlueFirst ? Card.blueAgent : Card.redAgent
             }, set: { newValue in
                 key.isBlueFirst = newValue == Card.blueAgent
             })) {
-                Card.redAgent.image
-                    .tag(Card.redAgent)
-                Card.blueAgent.image
-                    .tag(Card.blueAgent)
+                Label(
+                    title: { Text("Red") },
+                    icon: {
+                        Card.redAgent.image
+                            .foregroundStyle(.white, .red)
+                    }
+                ).tag(Card.redAgent)
+                Label(
+                    title: { Text("Blue") },
+                    icon: {
+                        Card.blueAgent.image
+                            .foregroundStyle(.white, .blue)
+                    }
+                ).tag(Card.blueAgent)
             } label: { }
-                .pickerStyle(.segmented)
-                .labelsHidden()
                 .frame(maxWidth: 120)
                 .padding(.trailing)
+                .tint(.black)
             
             Spacer()
             

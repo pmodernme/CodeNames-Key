@@ -18,20 +18,27 @@ struct ContentView: View {
             KeyView(key: $dataSource.key, isBlueFirst: dataSource.key.isBlueFirst)
             
             VStack {
-                OptionView(key: $dataSource.key, showShuffleWarning: $showShuffleWarning)
-                    .alert("Shuffle", isPresented: $showShuffleWarning) {
-                        Button("Shuffle", role: .destructive, action: dataSource.shuffle)
-                    } message: {
-                        Text("You will lose your old key.")
-                    }
-                
-                CounterView(redCount: dataSource.redCount, blueCount: dataSource.blueCount)
+                options
+                counter
             }
             .padding(.horizontal, 8)
             .padding(.top)
         }
         .padding()
         .background(Color(.systemGroupedBackground))
+    }
+    
+    var options: some View {
+        OptionView(key: $dataSource.key, showShuffleWarning: $showShuffleWarning)
+            .alert("Shuffle", isPresented: $showShuffleWarning) {
+                Button("Shuffle", role: .destructive, action: dataSource.shuffle)
+            } message: {
+                Text("You will lose your old key.")
+            }
+    }
+    
+    var counter: some View {
+        CounterView(redCount: dataSource.redCount, blueCount: dataSource.blueCount)
     }
 }
 

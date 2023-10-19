@@ -2,7 +2,7 @@ import Foundation
 import Combine
 
 class DataSource: ObservableObject {
-    @Published private var _key: Key = Key()
+    @Published private var _key: Key
     
     var key: Key {
         get { _key }

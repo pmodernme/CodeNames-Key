@@ -25,12 +25,13 @@ struct CardView: View {
             .overlay {
                 card.image
                     .resizable()
-                    .imageScale(.large)
-                    .fontWeight(.bold)
+                    .imageScale(.small)
+                    .fontWeight(.heavy)
                     .aspectRatio(contentMode: .fit)
                     .aspectRatio(1, contentMode: .fit)
                     .frame(maxWidth: 44, maxHeight: 44)
-                    .padding(12)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                     .foregroundColor(card == .assassin ? .white : .black)
             }
         }
@@ -62,9 +63,9 @@ extension Card {
     var image: Image {
         switch self {
             case .redAgent:
-                return Image(systemName: "dot.square")
+                return Image(systemName: "dot.square.fill")
             case .blueAgent:
-                return Image(systemName: "plus.diamond")
+                return Image(systemName: "xmark.diamond.fill")
             case .doubleAgent:
                 return Image(systemName: "suit.diamond.fill")
             case .bystander:
